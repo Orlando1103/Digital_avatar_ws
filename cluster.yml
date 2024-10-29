@@ -1,0 +1,14 @@
+hazelcast:
+  cluster-name: misscut
+  network:
+    # 封装在docker内部的服务，需要通过宿主机ip+映射端口完成地址统一（否则无法正常通信）
+    public-address: 本机ip:5701(5701开始，若被占用，依次递增)
+    join:
+      multicast:
+        enabled: false
+      tcp-ip:
+        enabled: true
+        # 所有member（cluster内部的微服务）都放在这里
+        member-list:
+          - 本机ip: # 服务1地址
+          - 其他机器ip # 服务2地址

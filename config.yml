@@ -1,0 +1,108 @@
+rest_verticle:
+  port: 9992
+  instance: 8
+
+db_verticle:
+  db_para: '{
+                "host": "127.0.0.1",
+                "port": 3306,
+                "db": "avatar",
+                "max_pool_size": 1000,
+                "user": "root",
+                "password": "123456qwer"
+           }'
+
+  instance: 8
+
+
+schedule_verticle:
+  instance: 1
+
+algo_verticle:
+  instance: 4
+
+redis:
+  hosts:
+    - redis://localhost:6379
+  max_pool_size: 64
+  max_pool_waiting: 256
+  #最大重连尝试次数
+  max_per_connect_retries: 3
+  #最大重连等待时间（毫秒），连接失败后下一次尝试连接时间间隔
+  max_reconnect_waiting_period: 60000
+
+media:
+  tmp_dir: tmp
+  file_dir: files
+
+vertx:
+  file_cache_dir: ./cache
+  worker_pool_size_cpus_ratio: 8
+
+mal_api:
+  server_ip: "www.ijiaodui.com"
+  server_port: 443
+  gpt_type: 1056
+  sms_type: 2308
+  path: /scheduler/check/v1
+
+
+websocket_api:
+  server_ip: localhost
+  server_port: 8089
+  user_status_url: "/web/user_status"
+  push_url: "/push/v1"
+
+chat_mal_api:
+  server_ip: 8.149.130.222
+  server_port: 22500
+  get_ai_reply: "/mal/get_ai_reply"
+  get_recommend_expert_uuid: "/mal/get_recommend_expert_uuid"
+  handle_knowledge_accumulation: "/mal/handle_knowledge_accumulation"
+  get_random_questions: "/mal/get_random_questions"
+  get_chat_resource_info: "/mal/get_chat_resource_info"
+  get_chat_reply_basis: "/mal/get_chat_reply_basis"
+  get_parent_reply_basis: "/mal/get_parent_reply_basis"
+  get_chat_title: "/mal/get_chat_title"
+  get_audio_path: "/mal/get_audio_path"
+  get_file: "/mal/get_file"
+
+sms_config:
+  sign_id: qm_8776c0683f9c43f2a9441e3f85f01e84
+  template_id: mb_6eb088986ff34f579c87fe990dee2103
+
+
+common_config:
+  test_signin: true
+
+time_regex:
+  - "(\\d{4})\\-(\\d{2})\\-(\\d{2})"
+  - "(\\d{4})\\.(\\d{2})\\.(\\d{2})"
+  - "(\\d{4})年(\\d{2})月(\\d{2})日"
+  - "(\\d{4})年(\\d{1})月(\\d{1})日"
+  - "(\\d{4})年(\\d{2})月(\\d{1})日"
+  - "(\\d{4})年(\\d{1})月(\\d{2})日"
+  - "(\\d{4})年(\\d{2})月"
+  - "(\\d{4})年(\\d{1})月"
+  - "(\\d{4})年"
+  - "(\\d{4})\\-(\\d{2})"
+  - "(\\d{4})\\-([1-9])"
+  - "(\\d{4})\\.(\\d{2})"
+  - "(\\d{4})\\.([1-9])"
+
+
+jwt:
+  algorithm: HS256
+  public_key: yX2xvZ2luX2lkIjoiYWRtaW4iLCJ1c2VyX3JvbGUiOjEsInVzZXJfcGVybXMiOjEsImlhdCI6MTU2MzYwNTg4NX0.uxoCJS4oC1wyJu1TyALFaaBcrjI
+  max_token_time: 2592000000
+
+
+metrics:
+  database: digital
+  db_url: http://192.168.9.129:23086
+
+# cluster 参数
+cluster:
+  name: "misscut"
+  #  config: "cluster.yml"
+#  host: 183.173.162.162
